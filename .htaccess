@@ -1,29 +1,13 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews
+        Options -MultiViews -Indexes
     </IfModule>
-    
+
     RewriteEngine On
-    
-    # Force redirect /public/ to root (remove public from URL) - Method 1
-    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
-    RewriteRule ^ /%1? [R=301,L]
-    
-    # Force redirect /public/ to root - Method 2 (backup)
-    RewriteCond %{REQUEST_URI} ^/public/(.*)$ [NC]
-    RewriteRule ^public/(.*)$ /$1 [R=301,L]
-    
-    # Alternative force redirect for /public/ without trailing path
-    RewriteCond %{THE_REQUEST} \s/+public/?\s [NC]
-    RewriteRule ^ /? [R=301,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Handle X-XSRF-Token Header
-    RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -33,5 +17,5 @@
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ public/index.php [L]
+    RewriteRule ^ index.php [L]
 </IfModule>
