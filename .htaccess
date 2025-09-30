@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Redirect /public/ to root (remove public from URL)
+    RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+    RewriteRule ^ /%1? [NC,L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
