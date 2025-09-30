@@ -5,13 +5,17 @@
     
     RewriteEngine On
     
-    # Redirect /public/ to root (remove public from URL)
+    # Force redirect /public/ to root (remove public from URL) - Method 1
+    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
+    RewriteRule ^ /%1? [R=301,L]
+    
+    # Force redirect /public/ to root - Method 2 (backup)
     RewriteCond %{REQUEST_URI} ^/public/(.*)$ [NC]
     RewriteRule ^public/(.*)$ /$1 [R=301,L]
     
-    # Alternative redirect for /public/ without trailing path
-    RewriteCond %{REQUEST_URI} ^/public/?$ [NC]
-    RewriteRule ^public/?$ / [R=301,L]
+    # Alternative force redirect for /public/ without trailing path
+    RewriteCond %{THE_REQUEST} \s/+public/?\s [NC]
+    RewriteRule ^ /? [R=301,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
