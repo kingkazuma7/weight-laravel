@@ -3,10 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeightClassController; // ★ 1. コントローラをインポート
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// トップページでWeightClassを表示
 Route::get('/', [WeightClassController::class, 'index']);
 
 // ★ 2. 新しいルートを定義
