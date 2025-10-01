@@ -7,7 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [WeightClassController::class, 'index']);
+
 // ★ 2. 新しいルートを定義
 // GETリクエストで'/weight-classes'にアクセスが来たら、
 // WeightClassControllerのindexメソッドを実行する
-Route::get('/weight-classes', [WeightClassController::class, 'index']);
+// Route::get('/weight-classes', [WeightClassController::class, 'index']);
