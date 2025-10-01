@@ -34,3 +34,13 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/pmlyknzb/public_html/weight.mma7.date/index.php on line 14
+[01-Oct-2025 08:04:17 UTC] PHP Warning:  require(/home/pmlyknzb/public_html/weight.mma7.date/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/pmlyknzb/public_html/weight.mma7.date/index.php on line 14
+[01-Oct-2025 08:04:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/pmlyknzb/public_html/weight.mma7.date/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php84/root/usr/share/pear') in /home/pmlyknzb/public_html/weight.mma7.date/index.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/pmlyknzb/public_html/weight.mma7.date/index.php on line 14
+[01-Oct-2025 08:05:14 UTC] PHP Warning:  require(/home/pmlyknzb/public_html/weight.mma7.date/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/pmlyknzb/public_html/weight.mma7.date/index.php on line 14
+[01-Oct-2025 08:05:14 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/pmlyknzb/public_html/weight.mma7.date/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php84/root/usr/share/pear') in /home/pmlyknzb/public_html/weight.mma7.date/index.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/pmlyknzb/public_html/weight.mma7.date/index.php on line 14
