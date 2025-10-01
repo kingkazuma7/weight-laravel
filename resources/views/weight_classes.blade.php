@@ -113,6 +113,96 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- UFCのデータテーブル -->
+        <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">
+            UFC 階級データ一覧
+        </h2>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
+            <table class="min-w-full divide-y divide-red-200">
+                <thead class="bg-red-600 text-white">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/4 rounded-tl-lg">
+                            格闘技
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/4">
+                            階級名
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tr-lg">
+                            体重制限
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-100">
+                    @forelse ($classes->where('type', 'UFC(MMA)') as $class)
+                        <tr class="hover:bg-red-50 transition duration-150 ease-in-out">
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-800">
+                                {{ $class->type }}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                {{ $class->name }}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit), 1) }} kg以下
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="px-4 py-4 text-center text-sm font-medium text-red-600 bg-red-50">
+                                UFCのデータを取得できませんでした。
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ボクシングのデータテーブル -->
+        <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">
+            ボクシング 階級データ一覧
+        </h2>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
+            <table class="min-w-full divide-y divide-emerald-200">
+                <thead class="bg-emerald-600 text-white">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/4 rounded-tl-lg">
+                            格闘技
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/4">
+                            階級名
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tr-lg">
+                            体重制限
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-100">
+                    @forelse ($classes->where('type', 'ボクシング') as $class)
+                        <tr class="hover:bg-emerald-50 transition duration-150 ease-in-out">
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-800">
+                                {{ $class->type }}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                {{ $class->name }}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                @if (str_contains($class->weight_limit, '超'))
+                                    {{ $class->weight_limit }}
+                                @else
+                                    {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit), 2) }} kg
+                                @endif
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="px-4 py-4 text-center text-sm font-medium text-emerald-600 bg-emerald-50">
+                                ボクシングのデータを取得できませんでした。
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </body>
