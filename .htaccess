@@ -5,15 +5,7 @@
 
     RewriteEngine On
 
-    # Force redirect from /public/ to root
-    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+public/
-    RewriteRule ^public/(.*) /$1 [R=301,L,NC]
-    
-    # Alternative method for /public redirect
-    RewriteCond %{REQUEST_URI} ^/public/(.*)$
-    RewriteRule ^ %1 [R=301,L]
-    
-    # Redirect /public to root
+    # Redirect /public/ to root (only exact match)
     RewriteCond %{REQUEST_URI} ^/public/?$
     RewriteRule ^public/?$ / [R=301,L]
 
