@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WeightClass;
+use App\Models\WeightClass; // ★ 1. モデルをインポート
 use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools;
 
 class WeightClassController extends Controller
 {
@@ -13,15 +12,8 @@ class WeightClassController extends Controller
      */
     public function index()
     {
-        // SEO設定
-        SEOTools::setTitle('格闘技 階級データ一覧 | RIZIN, UFC, ボクシング');
-        SEOTools::setDescription('RIZIN, UFC, ボクシングの階級（ウェイトクラス）データを一覧表示。各格闘技の体重制限を詳しく解説。');
-        SEOTools::setCanonical(url('/weight-classes'));
-        SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::twitter()->setCard('summary');
-        SEOTools::jsonLd()->setType('WebPage');
-
-        // データ取得
+        // ★ 2. Eloquent ORMを使ってデータを取得
+        // 全データを取得し、格闘技の種類(type)でソートしています
         $classes = WeightClass::orderBy('type')->get();
             
         // ★ 3. データをViewに渡して表示
