@@ -123,4 +123,20 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /* header meta tags */
+    'meta' => [
+        'title' => '格闘技 階級一覧 | 総合格闘技・ボクシングの体重階級を比較',
+        'description' => 'RIZIN・UFC・ボクシングの体重階級（ウエイトクラス）を比較・解説。各団体の階級の違いや特徴を分かりやすく解説します。',
+        'keywords' => '格闘技,階級,体重,RIZIN,UFC,ボクシング,MMA,ウエイトクラス',
+    ],
+
+    /* header Ogp meta tags */
+    'ogp' => [
+        'url' => env('APP_URL', 'https://weight.mma7.date'),
+        'type' => 'website',
+        'title' => '格闘技 階級一覧 | 総合格闘技・ボクシングの体重階級を比較',
+        'description' => 'RIZIN・UFC・ボクシングの体重階級（ウエイトクラス）を比較・解説。各団体の階級の違いや特徴を分かりやすく解説します。',
+        'site_name' => env('APP_NAME', '格闘技 階級一覧'),
+        'image' => 'images/logo.webp',
+    ],
 ];
