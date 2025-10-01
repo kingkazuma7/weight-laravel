@@ -19,10 +19,10 @@
         
         <!-- タイトルエリア -->
         <h1 class="text-3xl font-extrabold text-indigo-700 mb-2">
-            格闘技 階級データ一覧
+            RIZIN 階級データ一覧
         </h1>
         <p class="text-sm text-gray-500 mb-8 border-b pb-4">
-            Eloquent ORM を介して取得されたボクシング、RIZIN、UFCの階級データです。
+            RIZINの階級データ一覧です。体重制限は全て「以下」となります。
         </p>
         
         <!-- データテーブル -->
@@ -42,8 +42,8 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-100">
-                    <!-- コントローラから渡された $classes (Eloquentコレクション) をループで展開 -->
-                    @forelse ($classes as $class)
+                    <!-- RIZINのデータのみを表示 -->
+                    @forelse ($classes->where('type', 'RIZIN(MMA)') as $class)
                         <tr class="hover:bg-indigo-50 transition duration-150 ease-in-out">
                             <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-800">
                                 {{ $class->type }}
@@ -52,7 +52,11 @@
                                 {{ $class->name }}
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
-                                {{ $class->weight_limit }}
+                                @if ($class->weight_limit === '無制限')
+                                    {{ $class->weight_limit }}
+                                @else
+                                    {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit)) }} kg以下
+                                @endif
                             </td>
                         </tr>
                     @empty
