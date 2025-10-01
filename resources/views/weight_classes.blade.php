@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 p-4 md:p-8 min-h-screen flex items-center justify-center">
+<body class="bg-gray-50 p-4 md:p-8 min-h-screen flex justify-center">
     <div class="w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10 border border-gray-100">
         <!-- タイトルエリア -->
         <h1 class="text-3xl font-extrabold text-gray-800 mb-2">
