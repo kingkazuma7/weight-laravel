@@ -5,22 +5,19 @@
     
     RewriteEngine On
     
-    # Add noindex for /public/ URLs and redirect
-    RewriteCond %{REQUEST_URI} ^/public/
-    RewriteRule .* - [E=NOINDEX:1]
-    Header set X-Robots-Tag "noindex" env=NOINDEX
+    # 重要な修正: 最初に/public/へのアクセスをリダイレクト
+    # 方法1: THE_REQUEST を使用（より確実）
+    RewriteCond %{THE_REQUEST} \s/public/([^\s?]+) [NC]
+    RewriteRule ^ /%1 [R=301,L]
     
-    # Force redirect /public/ to root (remove public from URL)
-    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
-    RewriteRule ^ /%1? [R=301,L]
-    
-    # Force redirect /public/ to root - Method 2 (backup)
+    # 方法2: REQUEST_URI を使用（バックアップ）
     RewriteCond %{REQUEST_URI} ^/public/(.*)$ [NC]
     RewriteRule ^public/(.*)$ /$1 [R=301,L]
     
-    # Alternative force redirect for /public/ without trailing path
-    RewriteCond %{THE_REQUEST} \s/+public/?\s [NC]
-    RewriteRule ^ /? [R=301,L]
+    # Add noindex for /public/ URLs (リダイレクト後のためのバックアップ)
+    RewriteCond %{THE_REQUEST} \s/public/ [NC]
+    RewriteRule .* - [E=NOINDEX:1]
+    Header set X-Robots-Tag "noindex" env=NOINDEX
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -38,5 +35,5 @@
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ public/index.php [L]
+    RewriteRule ^ index.php [L]
 </IfModule>
