@@ -32,11 +32,14 @@
                     <table class="min-w-full divide-y divide-indigo-200">
                         <thead class="bg-indigo-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tl-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
                                     階級名
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tr-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3">
                                     体重制限
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tr-lg">
+                                    主要・トップ選手
                                 </th>
                             </tr>
                         </thead>
@@ -53,10 +56,13 @@
                                             {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit)) }} kg以下
                                         @endif
                                     </td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">
+                                        <!-- 主要・トップ選手のデータがここに入ります -->
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="2" class="px-4 py-4 text-center text-sm font-medium text-indigo-600 bg-indigo-50">
+                                    <td colspan="3" class="px-4 py-4 text-center text-sm font-medium text-indigo-600 bg-indigo-50">
                                         RIZINのデータを取得できませんでした。
                                     </td>
                                 </tr>
@@ -72,11 +78,14 @@
                     <table class="min-w-full divide-y divide-red-200">
                         <thead class="bg-red-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tl-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
                                     階級名
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tr-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3">
                                     体重制限
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tr-lg">
+                                    主要・トップ選手
                                 </th>
                             </tr>
                         </thead>
@@ -89,10 +98,13 @@
                                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
                                         {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit), 1) }} kg以下
                                     </td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">
+                                        <!-- 主要・トップ選手のデータがここに入ります -->
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="2" class="px-4 py-4 text-center text-sm font-medium text-red-600 bg-red-50">
+                                    <td colspan="3" class="px-4 py-4 text-center text-sm font-medium text-red-600 bg-red-50">
                                         UFCのデータを取得できませんでした。
                                     </td>
                                 </tr>
@@ -108,11 +120,14 @@
                     <table class="min-w-full divide-y divide-emerald-200">
                         <thead class="bg-emerald-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tl-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
                                     階級名
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/2 rounded-tr-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3">
                                     体重制限
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tr-lg">
+                                    主要・トップ選手
                                 </th>
                             </tr>
                         </thead>
@@ -129,10 +144,13 @@
                                             {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit), 2) }} kg
                                         @endif
                                     </td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">
+                                        <!-- 主要・トップ選手のデータがここに入ります -->
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="2" class="px-4 py-4 text-center text-sm font-medium text-emerald-600 bg-emerald-50">
+                                    <td colspan="3" class="px-4 py-4 text-center text-sm font-medium text-emerald-600 bg-emerald-50">
                                         ボクシングのデータを取得できませんでした。
                                     </td>
                                 </tr>
