@@ -28,8 +28,8 @@
 
             <!-- RIZINのデータテーブル -->
             <div id="rizin-content" class="tab-content active">
-                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
-                    <table class="min-w-full divide-y divide-indigo-200">
+                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                    <table class="min-w-[600px] w-full divide-y divide-indigo-200">
                         <thead class="bg-indigo-600 text-white">
                             <tr>
                                 <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
@@ -91,8 +91,8 @@
 
             <!-- UFCのデータテーブル -->
             <div id="ufc-content" class="tab-content">
-                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
-                    <table class="min-w-full divide-y divide-red-200">
+                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                    <table class="min-w-[600px] w-full divide-y divide-red-200">
                         <thead class="bg-red-600 text-white">
                             <tr>
                                 <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
@@ -150,8 +150,8 @@
 
             <!-- ボクシングのデータテーブル -->
             <div id="boxing-content" class="tab-content">
-                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
-                    <table class="min-w-full divide-y divide-emerald-200">
+                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                    <table class="min-w-[600px] w-full divide-y divide-emerald-200">
                         <thead class="bg-emerald-600 text-white">
                             <tr>
                                 <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
@@ -219,6 +219,42 @@
         }
         .tab-content.active {
             display: block;
+        }
+        
+        /* スマホでの横スクロールを改善 */
+        .overflow-x-auto {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #d1d5db #f3f4f6;
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        
+        /* スマホでのタッチスクロールを最適化 */
+        @media (max-width: 768px) {
+            .overflow-x-auto {
+                scroll-snap-type: x mandatory;
+            }
+            
+            .overflow-x-auto table {
+                scroll-snap-align: start;
+            }
         }
     </style>
 
