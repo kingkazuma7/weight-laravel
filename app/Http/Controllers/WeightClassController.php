@@ -12,13 +12,18 @@ class WeightClassController extends Controller
      */
     public function index()
     {
-        // 全データを取得し、格闘技の種類(type)でグループ化
-        $classes = WeightClass::all()
-            ->sortBy(function ($class) {
-                // 体重制限で降順ソート（大きい順）
-                return -$class->getWeightLimitValue();
-            })
-            ->sortBy('type'); // 格闘技の種類でソート
+        // Eager Loadingで選手データも一緒に取得（N+1問題を回避）
+        $classes = WeightClass::with(['fighters' => function ($query) {
+            // チャンピオンを優先して表示
+            $query->orderByRaw("CASE WHEN status = 'champion' THEN 1 WHEN status = 'former_champion' THEN 2 ELSE 3 END")
+                  ->orderBy('name');
+        }])
+        ->get()
+        ->sortBy(function ($class) {
+            // 体重制限で降順ソート（大きい順）
+            return -$class->getWeightLimitValue();
+        })
+        ->sortBy('type'); // 格闘技の種類でソート
             
         return view('weight_classes', compact('classes'));
     }

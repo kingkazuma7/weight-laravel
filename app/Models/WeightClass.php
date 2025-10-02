@@ -31,4 +31,25 @@ class WeightClass extends Model
         // "kg" と空白を除去して数値に変換
         return (float) str_replace(['kg', ' '], '', $this->weight_limit);
     }
+
+    /**
+     * この階級に所属する選手たち
+     * 一対多のリレーションシップ
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fighters()
+    {
+        return $this->hasMany(Fighter::class);
+    }
+
+    /**
+     * この階級の現在のチャンピオンを取得
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function champion()
+    {
+        return $this->hasOne(Fighter::class)->where('status', 'champion');
+    }
 }

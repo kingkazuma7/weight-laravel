@@ -57,7 +57,25 @@
                                         @endif
                                     </td>
                                     <td class="px-4 py-3 text-sm text-gray-600">
-                                        <!-- 主要・トップ選手のデータがここに入ります -->
+                                        @php
+                                            // 階級に紐づく選手の中から、statusが'champion'のレコードを検索
+                                            $champion = $class->fighters->where('status', 'champion')->first();
+                                        @endphp
+
+                                        @if ($champion)
+                                            <div class="space-y-1">
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-yellow-500">🏆</span>
+                                                    <span class="font-bold text-indigo-600">{{ $champion->name }}</span>
+                                                    <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">{{ $champion->organization }}</span>
+                                                </div>
+                                                @if ($champion->notes)
+                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                @endif
+                                            </div>
+                                        @else
+                                            <span class="text-gray-400 italic">（チャンピオン不在）</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -99,7 +117,25 @@
                                         {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit), 1) }} kg以下
                                     </td>
                                     <td class="px-4 py-3 text-sm text-gray-600">
-                                        <!-- 主要・トップ選手のデータがここに入ります -->
+                                        @php
+                                            // 階級に紐づく選手の中から、statusが'champion'のレコードを検索
+                                            $champion = $class->fighters->where('status', 'champion')->first();
+                                        @endphp
+
+                                        @if ($champion)
+                                            <div class="space-y-1">
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-yellow-500">🏆</span>
+                                                    <span class="font-bold text-red-600">{{ $champion->name }}</span>
+                                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">{{ $champion->organization }}</span>
+                                                </div>
+                                                @if ($champion->notes)
+                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                @endif
+                                            </div>
+                                        @else
+                                            <span class="text-gray-400 italic">（チャンピオン不在）</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -145,7 +181,25 @@
                                         @endif
                                     </td>
                                     <td class="px-4 py-3 text-sm text-gray-600">
-                                        <!-- 主要・トップ選手のデータがここに入ります -->
+                                        @php
+                                            // 階級に紐づく選手の中から、statusが'champion'のレコードを検索
+                                            $champion = $class->fighters->where('status', 'champion')->first();
+                                        @endphp
+
+                                        @if ($champion)
+                                            <div class="space-y-1">
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="text-yellow-500">🏆</span>
+                                                    <span class="font-bold text-emerald-600">{{ $champion->name }}</span>
+                                                    <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">{{ $champion->organization }}</span>
+                                                </div>
+                                                @if ($champion->notes)
+                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                @endif
+                                            </div>
+                                        @else
+                                            <span class="text-gray-400 italic">（チャンピオン不在）</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
