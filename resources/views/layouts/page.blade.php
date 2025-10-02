@@ -10,6 +10,18 @@
 
         <title>@yield('meta_title', config('app.meta.title'))</title>
 
+        @if(env('APP_ENV') === 'production')
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0B5S0SKBTH"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-0B5S0SKBTH');
+        </script>
+        @endif
+
         <!-- OGP -->
         <meta property="og:title" content="@yield('meta_title', config('app.meta.title'))">
         <meta property="og:type" content="website">
