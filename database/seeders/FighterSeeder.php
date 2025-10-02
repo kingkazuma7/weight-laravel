@@ -17,58 +17,38 @@ class FighterSeeder extends Seeder
         // 階級データを取得
         $rizinFeatherweight = WeightClass::where('type', 'RIZIN(MMA)')->where('name', 'フェザー級')->first();
         $rizinLightweight = WeightClass::where('type', 'RIZIN(MMA)')->where('name', 'ライト級')->first();
-        $ufcFeatherweight = WeightClass::where('type', 'UFC(MMA)')->where('name', 'フェザー級')->first();
-        $boxingFeatherweight = WeightClass::where('type', 'ボクシング')->where('name', 'フェザー級')->first();
+        $rizinBantamweight = WeightClass::where('type', 'RIZIN(MMA)')->where('name', 'バンタム級')->first();
 
-        // RIZIN フェザー級のサンプルデータ
-        if ($rizinFeatherweight) {
-            Fighter::create([
-                'name' => 'A選手',
-                'organization' => 'RIZIN',
-                'status' => 'champion',
-                'weight_class_id' => $rizinFeatherweight->id,
-                'notes' => '現役チャンピオン'
-            ]);
-
-            Fighter::create([
-                'name' => 'B選手',
-                'organization' => 'RIZIN',
-                'status' => 'contender',
-                'weight_class_id' => $rizinFeatherweight->id,
-                'notes' => '挑戦者'
-            ]);
-        }
-
-        // RIZIN ライト級のサンプルデータ
+        // RIZIN ライト級 - ホベルト・サトシ・ソウザ（現チャンピオン）
         if ($rizinLightweight) {
             Fighter::create([
-                'name' => 'C選手',
+                'name' => 'ホベルト・サトシ・ソウザ',
                 'organization' => 'RIZIN',
                 'status' => 'champion',
                 'weight_class_id' => $rizinLightweight->id,
-                'notes' => '現役チャンピオン'
+                'notes' => '防衛5回'
             ]);
         }
 
-        // UFC フェザー級のサンプルデータ
-        if ($ufcFeatherweight) {
+        // RIZIN フェザー級 - ラジャブアリ・シェイドゥラエフ（現チャンピオン）
+        if ($rizinFeatherweight) {
             Fighter::create([
-                'name' => 'D選手',
-                'organization' => 'UFC',
+                'name' => 'ラジャブアリ・シェイドゥラエフ',
+                'organization' => 'RIZIN',
                 'status' => 'champion',
-                'weight_class_id' => $ufcFeatherweight->id,
-                'notes' => '現役チャンピオン'
+                'weight_class_id' => $rizinFeatherweight->id,
+                'notes' => '防衛1回'
             ]);
         }
 
-        // ボクシング フェザー級のサンプルデータ
-        if ($boxingFeatherweight) {
+        // RIZIN バンタム級 - 井上直樹（現チャンピオン）
+        if ($rizinBantamweight) {
             Fighter::create([
-                'name' => 'E選手',
-                'organization' => 'WBC',
+                'name' => '井上直樹',
+                'organization' => 'RIZIN',
                 'status' => 'champion',
-                'weight_class_id' => $boxingFeatherweight->id,
-                'notes' => 'WBC世界チャンピオン'
+                'weight_class_id' => $rizinBantamweight->id,
+                'notes' => '防衛2回'
             ]);
         }
     }
