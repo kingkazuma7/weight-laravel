@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="google-site-verification" content="6SNLD4Z1k89AAcyohUG5cpxsqiCxqkX12VetSTQVdIo" />
         <meta name="description" content="@yield('meta_description', config('app.meta.description'))">
         <meta name="keywords" content="@yield('meta_keywords', config('app.meta.keywords'))">
 
