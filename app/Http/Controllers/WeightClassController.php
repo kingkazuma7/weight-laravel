@@ -12,12 +12,14 @@ class WeightClassController extends Controller
      */
     public function index()
     {
-        // ★ 2. Eloquent ORMを使ってデータを取得
-        // 全データを取得し、格闘技の種類(type)でソートしています
-        $classes = WeightClass::orderBy('type')->get();
+        // 全データを取得し、格闘技の種類(type)でグループ化
+        $classes = WeightClass::all()
+            ->sortBy(function ($class) {
+                // 体重制限で降順ソート（大きい順）
+                return -$class->getWeightLimitValue();
+            })
+            ->sortBy('type'); // 格闘技の種類でソート
             
-        // ★ 3. データをViewに渡して表示
-        // 'weight_classes'というViewに、取得したデータを'classes'という名前で渡す
         return view('weight_classes', compact('classes'));
     }
 }
