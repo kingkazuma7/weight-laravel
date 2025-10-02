@@ -67,7 +67,6 @@
                                                 <div class="flex items-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-indigo-600">{{ $champion->name }}</span>
-                                                    <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">{{ $champion->organization }}</span>
                                                 </div>
                                                 @if ($champion->notes)
                                                     <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
@@ -127,7 +126,6 @@
                                                 <div class="flex items-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-red-600">{{ $champion->name }}</span>
-                                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">{{ $champion->organization }}</span>
                                                 </div>
                                                 @if ($champion->notes)
                                                     <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
@@ -191,7 +189,6 @@
                                                 <div class="flex items-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-emerald-600">{{ $champion->name }}</span>
-                                                    <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">{{ $champion->organization }}</span>
                                                 </div>
                                                 @if ($champion->notes)
                                                     <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
