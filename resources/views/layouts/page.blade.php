@@ -40,7 +40,8 @@
         <link rel="canonical" href="{{ url()->current() }}">
         <link rel="icon" href="{{ asset('images/logo.webp') }}" type="image/x-icon">
 
-        <!-- Scripts -->
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     </head>

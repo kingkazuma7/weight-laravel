@@ -1,0 +1,9 @@
+// 独自のスタイルをインポート
+@use 'weight-classes';
+
+// 基本スタイル
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    color: #374151;
+}

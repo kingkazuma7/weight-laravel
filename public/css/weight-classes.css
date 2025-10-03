@@ -1,0 +1,40 @@
+@charset "UTF-8";
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+/* スマホでの横スクロールを改善 */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f3f4f6;
+}
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* スマホでのタッチスクロールを最適化 */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    scroll-snap-type: x mandatory;
+  }
+  .overflow-x-auto table {
+    scroll-snap-align: start;
+  }
+}
+
+/*# sourceMappingURL=weight-classes.css.map */
