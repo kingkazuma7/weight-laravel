@@ -107,7 +107,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-100">
-                            @forelse ($classes->where('type', 'UFC(MMA)') as $class)
+                            @forelse ($classes->where('type', 'UFC') as $class)
                                 <tr class="hover:bg-red-50 transition duration-150 ease-in-out">
                                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
                                         {{ $class->name }}

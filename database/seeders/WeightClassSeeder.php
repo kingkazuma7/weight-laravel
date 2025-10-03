@@ -47,7 +47,7 @@ class WeightClassSeeder extends Seeder
                 ['name' => 'ヘビー級', 'weight_limit' => '120 kg'],
                 ['name' => '無差別級', 'weight_limit' => '無制限'],
             ],
-            'UFC(MMA)' => [
+            'UFC' => [
                 ['name' => 'フライ級', 'weight_limit' => '56.7 kg'],
                 ['name' => 'バンタム級', 'weight_limit' => '61.2 kg'],
                 ['name' => 'フェザー級', 'weight_limit' => '65.8 kg'],

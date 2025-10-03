@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // 階級データを追加
+        $this->call(WeightClassSeeder::class);
+        
+        // ファイターデータを追加
+        $this->call(FighterSeeder::class);
     }
 }
