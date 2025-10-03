@@ -210,6 +210,19 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- フッターリンク -->
+            <div class="mt-8 px-4">
+                <h2 class="text-lg font-semibold text-gray-700 mb-3">関連リンク</h2>
+                <ul class="text-sm space-y-2">
+                    <li>
+                        <a href="https://kick.tokyo/?utm_source=weight-laravel&utm_medium=referral&utm_campaign=footer_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out flex items-center">
+                            <span class="mr-2">→</span>
+                            総合&amp;キックボクシング好きの格闘技ブログ
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
