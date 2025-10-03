@@ -14,6 +14,10 @@ class FighterSeeder extends Seeder
      */
     public function run(): void
     {
+        // 既存のファイターデータをクリア
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Fighter::truncate();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // RIZIN階級データを取得
         $rizinFeatherweight = WeightClass::where('type', 'RIZIN(MMA)')->where('name', 'フェザー級')->first();
         $rizinLightweight = WeightClass::where('type', 'RIZIN(MMA)')->where('name', 'ライト級')->first();

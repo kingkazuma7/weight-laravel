@@ -12,8 +12,10 @@ class WeightClassSeeder extends Seeder
      */
     public function run(): void
     {
-        // データの重複挿入を防ぐため、毎回データをクリア
+        // データの重複挿入を防ぐため、関連するFighterデータを含めて削除
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         WeightClass::truncate();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         // 挿入する全データ構造
         $data = [
