@@ -38,7 +38,12 @@
         <meta name="twitter:image" content="{{ asset('images/logo.webp') }}">
 
         <link rel="canonical" href="{{ url()->current() }}">
-        <link rel="icon" href="{{ asset('images/logo.webp') }}" type="image/x-icon">
+        <!-- Favicon -->
+        <link rel="icon" href="{{ asset('mma_favicon.svg') }}" type="image/svg+xml">
+        <link rel="alternate icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.webp') }}">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
