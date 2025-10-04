@@ -21,9 +21,6 @@
                 <button onclick="showTab('ufc')" id="ufc-tab" class="px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out text-gray-600 hover:text-red-600">
                     UFC
                 </button>
-                <button onclick="showTab('boxing')" id="boxing-tab" class="px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out text-gray-600 hover:text-emerald-600">
-                    ボクシング
-                </button>
             </div>
 
             <!-- RIZINのデータテーブル -->
@@ -147,69 +144,6 @@
                     </table>
                 </div>
             </div>
-
-            <!-- ボクシングのデータテーブル -->
-            <div id="boxing-content" class="tab-content">
-                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                    <table class="min-w-[600px] w-full divide-y divide-emerald-200">
-                        <thead class="bg-emerald-600 text-white">
-                            <tr>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
-                                    階級名
-                                </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3">
-                                    体重制限
-                                </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tr-lg">
-                                    主要・トップ選手
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-100">
-                            @forelse ($classes->where('type', 'ボクシング') as $class)
-                                <tr class="hover:bg-emerald-50 transition duration-150 ease-in-out">
-                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
-                                        {{ $class->name }}
-                                    </td>
-                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
-                                        @if (str_contains($class->weight_limit, '超'))
-                                            {{ $class->weight_limit }}
-                                        @else
-                                            {{ number_format((float)str_replace(['kg', ' '], '', $class->weight_limit), 2) }} kg
-                                        @endif
-                                    </td>
-                                    <td class="px-4 py-3 text-sm text-gray-600">
-                                        @php
-                                            // 階級に紐づく選手の中から、statusが'champion'のレコードを検索
-                                            $champion = $class->fighters->where('status', 'champion')->first();
-                                        @endphp
-
-                                        @if ($champion)
-                                            <div class="space-y-1">
-                                                <div class="flex items-center space-x-2">
-                                                    <span class="text-yellow-500">🏆</span>
-                                                    <span class="font-bold text-emerald-600">{{ $champion->name }}</span>
-                                                </div>
-                                                @if ($champion->notes)
-                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
-                                                @endif
-                                            </div>
-                                        @else
-                                            <span class="text-gray-400 italic">（チャンピオン不在）</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="px-4 py-4 text-center text-sm font-medium text-emerald-600 bg-emerald-50">
-                                        ボクシングのデータを取得できませんでした。
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
             
             <!-- フッターリンク -->
             <div class="mt-8 px-4">
@@ -218,7 +152,7 @@
                     <li>
                         <a href="https://kick.tokyo/?utm_source=weight-laravel&utm_medium=referral&utm_campaign=footer_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out flex items-center">
                             <span class="mr-2">→</span>
-                            総合&amp;キックボクシング好きの格闘技ブログ
+                            総合&amp;MMA好きの格闘技ブログ
                         </a>
                     </li>
                 </ul>
@@ -237,7 +171,6 @@
             // すべてのタブボタンのスタイルをリセット
             document.getElementById('rizin-tab').className = 'px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out text-gray-600 hover:text-indigo-600';
             document.getElementById('ufc-tab').className = 'px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out text-gray-600 hover:text-red-600';
-            document.getElementById('boxing-tab').className = 'px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out text-gray-600 hover:text-emerald-600';
             
             // 選択されたコンテンツを表示
             document.getElementById(tabName + '-content').classList.add('active');
@@ -249,9 +182,6 @@
                     break;
                 case 'ufc':
                     document.getElementById('ufc-tab').className = 'px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out bg-red-600 text-white';
-                    break;
-                case 'boxing':
-                    document.getElementById('boxing-tab').className = 'px-4 py-2 rounded-t-lg font-semibold transition duration-150 ease-in-out bg-emerald-600 text-white';
                     break;
             }
         }
