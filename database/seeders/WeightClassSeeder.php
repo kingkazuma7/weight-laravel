@@ -19,25 +19,7 @@ class WeightClassSeeder extends Seeder
 
         // 挿入する全データ構造
         $data = [
-            'ボクシング' => [
-                ['name' => 'ミニマム級', 'weight_limit' => '47.62kg'],
-                ['name' => 'ライトフライ級', 'weight_limit' => '48.97kg'],
-                ['name' => 'フライ級', 'weight_limit' => '50.80kg'],
-                ['name' => 'スーパーフライ級', 'weight_limit' => '52.16kg'],
-                ['name' => 'バンタム級', 'weight_limit' => '53.52kg'],
-                ['name' => 'スーパーバンタム級', 'weight_limit' => '55.34kg'],
-                ['name' => 'フェザー級', 'weight_limit' => '57.15kg'],
-                ['name' => 'スーパーフェザー級', 'weight_limit' => '58.97kg'],
-                ['name' => 'ライト級', 'weight_limit' => '61.23kg'],
-                ['name' => 'スーパーライト級', 'weight_limit' => '63.50kg'],
-                ['name' => 'ウエルター級', 'weight_limit' => '66.68kg'],
-                ['name' => 'スーパーウエルター級', 'weight_limit' => '69.85kg'],
-                ['name' => 'ミドル級', 'weight_limit' => '72.57kg'],
-                ['name' => 'スーパーミドル級', 'weight_limit' => '76.20kg'],
-                ['name' => 'ライトヘビー級', 'weight_limit' => '79.38kg'],
-                ['name' => 'クルーザー級', 'weight_limit' => '90.72kg'],
-                ['name' => 'ヘビー級', 'weight_limit' => '90.72kg超'],
-            ],
+            
             'RIZIN(MMA)' => [
                 ['name' => 'フライ級', 'weight_limit' => '57 kg'],
                 ['name' => 'バンタム級', 'weight_limit' => '61 kg'],
