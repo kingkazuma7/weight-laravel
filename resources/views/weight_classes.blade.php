@@ -1,8 +1,10 @@
-<x-page-layout>
-    @section('meta_title', config('app.meta.title'))
-    @section('meta_description', config('app.meta.description'))
-    @section('meta_keywords', config('app.meta.keywords'))
+@extends('layouts.page')
 
+@section('title', config('app.meta.title'))
+@section('meta_description', config('app.meta.description'))
+@section('meta_keywords', config('app.meta.keywords'))
+
+@section('content')
     <div class="bg-gray-50 p-4 md:p-8 min-h-screen flex justify-center">
         <div class="w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10 border border-gray-100">
             <!-- タイトルエリア -->
@@ -60,13 +62,16 @@
                                         @endphp
 
                                         @if ($champion)
-                                            <div class="space-y-1">
-                                                <div class="flex items-center space-x-2">
+                                            <div class="space-y-1 text-center">
+                                                @if ($champion->image_path)
+                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mx-auto mb-2">
+                                                @endif
+                                                <div class="flex items-center justify-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-indigo-600">{{ $champion->name }}</span>
                                                 </div>
                                                 @if ($champion->notes)
-                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                    <div class="text-xs text-gray-500 italic mt-1">{{ $champion->notes }}</div>
                                                 @endif
                                             </div>
                                         @else
@@ -119,13 +124,16 @@
                                         @endphp
 
                                         @if ($champion)
-                                            <div class="space-y-1">
-                                                <div class="flex items-center space-x-2">
+                                            <div class="space-y-1 text-center">
+                                                @if ($champion->image_path)
+                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mx-auto mb-2">
+                                                @endif
+                                                <div class="flex items-center justify-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-red-600">{{ $champion->name }}</span>
                                                 </div>
                                                 @if ($champion->notes)
-                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                    <div class="text-xs text-gray-500 italic mt-1">{{ $champion->notes }}</div>
                                                 @endif
                                             </div>
                                         @else
@@ -191,4 +199,4 @@
             showTab('rizin');
         });
     </script>
-</x-page-layout>
+@endsection

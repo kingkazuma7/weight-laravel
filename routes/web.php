@@ -11,6 +11,9 @@ Route::get('/', [WeightClassController::class, 'index']);
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/sitemap/weight-classes.xml', [SitemapController::class, 'weightClasses']);
 
+// Fighterリソースルート
+Route::resource('fighters', App\Http\Controllers\FighterController::class);
+
 // ★ 2. 新しいルートを定義
 // GETリクエストで'/weight-classes'にアクセスが来たら、
 // WeightClassControllerのindexメソッドを実行する

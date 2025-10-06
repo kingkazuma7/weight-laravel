@@ -60,7 +60,7 @@
 
             <!-- Page Content -->
             <main id="main">
-                {{ $slot }}
+                @yield('content')
             </main>
 
             @include('layouts.footer')
