@@ -62,13 +62,16 @@
                                         @endphp
 
                                         @if ($champion)
-                                            <div class="space-y-1">
-                                                <div class="flex items-center space-x-2">
+                                            <div class="space-y-1 text-center">
+                                                @if ($champion->image_path)
+                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mx-auto mb-2">
+                                                @endif
+                                                <div class="flex items-center justify-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-indigo-600">{{ $champion->name }}</span>
                                                 </div>
                                                 @if ($champion->notes)
-                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                    <div class="text-xs text-gray-500 italic mt-1">{{ $champion->notes }}</div>
                                                 @endif
                                             </div>
                                         @else
@@ -121,13 +124,16 @@
                                         @endphp
 
                                         @if ($champion)
-                                            <div class="space-y-1">
-                                                <div class="flex items-center space-x-2">
+                                            <div class="space-y-1 text-center">
+                                                @if ($champion->image_path)
+                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mx-auto mb-2">
+                                                @endif
+                                                <div class="flex items-center justify-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-red-600">{{ $champion->name }}</span>
                                                 </div>
                                                 @if ($champion->notes)
-                                                    <div class="text-xs text-gray-500 italic">{{ $champion->notes }}</div>
+                                                    <div class="text-xs text-gray-500 italic mt-1">{{ $champion->notes }}</div>
                                                 @endif
                                             </div>
                                         @else

@@ -32,7 +32,23 @@ class FighterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'organization' => 'nullable|string|max:255',
+            'status' => 'nullable|string|max:255',
+            'weight_class_id' => 'required|exists:weight_classes,id',
+            'notes' => 'nullable|string',
+            'image' => 'nullable|image|max:2048', // 画像ファイルは2MBまで
+        ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('fighters', 'public');
+        }
+
+        Fighter::create(array_merge($validatedData, ['image_path' => $imagePath]));
+
+        return redirect()->route('fighters.index')->with('success', 'Fighter created successfully.');
     }
 
     /**
@@ -67,7 +83,7 @@ class FighterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'organization' => 'nullable|string|max:255',
-            'status' => 'nullable|string|max=255',
+            'status' => 'nullable|string|max:255',
             'weight_class_id' => 'required|exists:weight_classes,id',
             'notes' => 'nullable|string',
             'image' => 'nullable|image|max:2048', // 画像ファイルは2MBまで
