@@ -1,8 +1,10 @@
-<x-page-layout>
-    @section('meta_title', config('app.meta.title'))
-    @section('meta_description', config('app.meta.description'))
-    @section('meta_keywords', config('app.meta.keywords'))
+@extends('layouts.page')
 
+@section('title', config('app.meta.title'))
+@section('meta_description', config('app.meta.description'))
+@section('meta_keywords', config('app.meta.keywords'))
+
+@section('content')
     <div class="bg-gray-50 p-4 md:p-8 min-h-screen flex justify-center">
         <div class="w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10 border border-gray-100">
             <!-- タイトルエリア -->
@@ -191,4 +193,4 @@
             showTab('rizin');
         });
     </script>
-</x-page-layout>
+@endsection

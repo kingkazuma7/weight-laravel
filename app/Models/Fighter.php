@@ -16,6 +16,7 @@ class Fighter extends Model
         'status',
         'weight_class_id',
         'notes',
+        'image_path',
     ];
 
     /**
