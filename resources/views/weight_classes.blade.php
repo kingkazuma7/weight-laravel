@@ -5,7 +5,7 @@
 @section('meta_keywords', config('app.meta.keywords'))
 
 @section('content')
-    <div class="bg-gray-50 p-4 md:p-8 min-h-screen flex justify-center">
+    <div class="bg-gray-50 p-4 md:p-8 min-h-screen flex">
         <div class="w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10 border border-gray-100">
             <!-- タイトルエリア -->
             <h1 class="text-3xl font-extrabold text-gray-800 mb-2">
@@ -31,13 +31,13 @@
                     <table class="min-w-[600px] w-full divide-y divide-indigo-200">
                         <thead class="bg-indigo-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-lg">
                                     階級名
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     体重制限
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tr-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tr-lg">
                                     主要・トップ選手
                                 </th>
                             </tr>
@@ -62,11 +62,11 @@
                                         @endphp
 
                                         @if ($champion)
-                                            <div class="space-y-1 text-center">
+                                            <div class="space-y-1">
                                                 @if ($champion->image_path)
-                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mx-auto mb-2">
+                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mb-2">
                                                 @endif
-                                                <div class="flex items-center justify-center space-x-2">
+                                                <div class="flex items-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-indigo-600">{{ $champion->name }}</span>
                                                 </div>
@@ -97,13 +97,13 @@
                     <table class="min-w-[600px] w-full divide-y divide-red-200">
                         <thead class="bg-red-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tl-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-lg">
                                     階級名
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">
                                     体重制限
                                 </th>
-                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider w-1/3 rounded-tr-lg">
+                                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tr-lg">
                                     主要・トップ選手
                                 </th>
                             </tr>
@@ -124,11 +124,11 @@
                                         @endphp
 
                                         @if ($champion)
-                                            <div class="space-y-1 text-center">
+                                            <div class="space-y-1">
                                                 @if ($champion->image_path)
-                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mx-auto mb-2">
+                                                    <img src="{{ Storage::url($champion->image_path) }}" alt="{{ $champion->name }}" class="w-12 h-12 rounded-full object-cover mb-2">
                                                 @endif
-                                                <div class="flex items-center justify-center space-x-2">
+                                                <div class="flex items-center space-x-2">
                                                     <span class="text-yellow-500">🏆</span>
                                                     <span class="font-bold text-red-600">{{ $champion->name }}</span>
                                                 </div>
