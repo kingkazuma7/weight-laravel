@@ -1,61 +1,31 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 画像更新フロー
 
-## About Laravel
+このアプリケーションにおける画像のアップロード、更新、削除のフローは以下の通りです。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1. 画像の保存場所
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+画像ファイルは、Laravelの `storage` ディスクの `public` ドライブ内に、具体的には `storage/app/public/fighters` ディレクトリに保存されます。ファイル名には、一意のハッシュ値が使用されます。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. 公開アクセス
 
-## Learning Laravel
+`storage/app/public` ディレクトリ内の画像をWebからアクセス可能にするために、`php artisan storage:link` コマンドを実行して `public/storage` ディレクトリへのシンボリックリンクを作成する必要があります。これにより、ブラウザから `/storage/fighters/ファイル名.jpg` のように画像にアクセスできるようになります。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. 画像のアップロード (新規作成時)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- `FighterController` の `store` メソッドが画像のアップロードを処理します。
+- 入力フォームから `image` という名前で画像ファイルを受け取ります。
+- 受け取った画像は `storage/app/public/fighters` ディレクトリに保存され、そのパス（例: `fighters/xxxxxx.jpg`）がデータベースの `fighters` テーブルの `image_path` カラムに記録されます。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 4. 画像の更新
 
-## Laravel Sponsors
+- `FighterController` の `update` メソッドが画像の更新を処理します。
+- 新しい画像ファイルがアップロードされた場合、以下の手順で処理されます。
+    1. 既存の `image_path` にパスが記録されていれば、`Storage::disk('public')->delete($fighter->image_path)` を使用して古い画像ファイルが `storage/app/public/` から削除されます。
+    2. 新しい画像は `storage/app/public/fighters` ディレクトリに保存され、その新しいパスがデータベースの `image_path` カラムに更新されます。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 5. 画像の削除
 
-### Premium Partners
+- `FighterController` の `destroy` メソッドが `Fighter` レコードの削除を処理する際に、関連する画像ファイルも削除します。
+- `fighter->image_path` にパスが存在する場合、`Storage::disk('public')->delete($fighter->image_path)` を使用して画像ファイルが `storage/app/public/` から削除されます。
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
