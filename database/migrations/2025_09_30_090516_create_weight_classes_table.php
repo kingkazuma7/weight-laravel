@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('weight_classes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->string('type', 50)->comment('格闘技の種類'); 
+          $table->string('name', 100)->comment('階級名'); 
+          $table->string('weight_limit', 50)->nullable()->comment('体重制限'); 
+          $table->timestamps();
         });
     }
 
