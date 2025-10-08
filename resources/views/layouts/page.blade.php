@@ -46,8 +46,8 @@
         <link rel="apple-touch-icon" href="{{ asset('images/logo.webp') }}">
 
         <!-- Styles -->
-        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ secure_asset('css/weight-classes.css') }}" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/weight-classes.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
